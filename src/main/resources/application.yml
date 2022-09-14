@@ -1,0 +1,18 @@
+server:
+  port: 8090
+weather:
+  apikey: 26eb4d58dbff0c98b1f641509904c35e
+  url: api.openweathermap.org/data/2.5/weather
+  
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultzone: http://localhost:8761/eureka
+      
+spring:
+  application:
+    name: WeatherService
+
+

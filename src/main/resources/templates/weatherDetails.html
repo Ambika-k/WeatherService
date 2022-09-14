@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Weather Data</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<!--   	<link rel="stylesheet" -->
+<!-- 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
+</head>
+<body
+	background="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SZMXphYEipbdr8zi/beautiful-clouds-close-up-weather-background_skp3rq4r__F0000.png">
+	<h2>Weather Data</h2>
+	<div class="div">
+		<!-- 		<a  href="#" th:href="@{/product}" style="text-decoration: none"class="link">MONGO DATA</a>  -->
+		<a href="#" th:href="@{/weather}" style="text-decoration: none"
+			class="link">WEATHER DATA</a>
+	</div>
+
+	<div class="div1">
+		<table id="table" style="width: 100%">
+			<tr>
+				<th>City</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>Weather</th>
+				<th>Temperature(Celsius)</th>
+				<th>Date(GMT)</th>
+				<th>Time(GMT)</th>
+			</tr>
+			<tr th:each="weather,iterStat : ${weatherData}">
+				<td><span th:text="${weather.getName()}"></span></td>
+				<td><span th:text="${weather.getLat()}"></span></td>
+				<td><span th:text="${weather.getLon()}"></span></td>
+				<td><span th:text="${weather.getWeatherDescription()}"></span></td>
+				<td><span th:text="${weather.getTemp()}"></span></td>
+				<td><span th:text="${weather.getDate()}"></span></td>
+				<td><span th:text="${weather.getTime()}"></span></td>
+
+			</tr>
+		</table>
+	</div>
+	<form autocomplete="off" action="#" th:action="@{/sendmessage}"
+		method="post">
+		<div class="form-group">
+			<label for="tel">Phone</label> <input type="tel" name="number"
+				id="tel" class="form-control" placeholder="+911234567890"
+				autocomplete="off">
+		</div>
+
+		<!-- <div class="form-group">
+			<label for="message">Message</label>
+			<textarea name="message" class="form-control" id="message"
+				autocomplete="off" placeholder="type message..."></textarea>
+		</div> -->
+
+
+		<div class="modal-footer d-flex justify-content-center">
+			<div class="row">
+
+				<div class="col-md-8">
+					<button type="submit" name="action" value="register"
+						class="btn btn-success">SendData</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
